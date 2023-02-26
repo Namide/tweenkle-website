@@ -1,164 +1,91 @@
 <script setup lang="ts">
+import CodePart from "@/components/CodePart.vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { DynamicTween } from "../../../tweenkle/src/tween/DynamicTween";
 
-const SIDE_VW = 75;
 const mouse = { x: 0, y: 0 };
 
-const section = document.createElement("section");
-section.setAttribute(
-  "style",
-  `
-  width: ${SIDE_VW}vw;
-  height: ${SIDE_VW}vw;
-  position: relative;
-  border: 1px solid black;
-  margin-bottom: 64px;
-`
+const area = ref<HTMLDivElement>();
+const position = ref({ x: 0, y: 0 });
+
+let changeTween: () => void;
+let tween: DynamicTween<[number, number]>;
+
+const pointTransform = computed(
+  () =>
+    `translateX(${position.value.x * 100}%) translateY(${
+      position.value.y * 100
+    }%)`
 );
-section.addEventListener("mousemove", (event: MouseEvent) => {
+
+const onMouseMove = (event: MouseEvent) => {
   mouse.x = event.pageX;
   mouse.y = event.pageY;
+};
+
+onMounted(() => {
+  console.log("onMounted", tween);
+  tween = new DynamicTween({
+    from: [0, 0],
+    to: [0.5, 0.5],
+    onUpdate: ([x, y]: number[]) => {
+      position.value.x = x;
+      position.value.y = y;
+    },
+  });
+
+  changeTween = () => {
+    const { left, top, width, height } =
+      area.value?.getBoundingClientRect() || {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+      };
+    const x = (mouse.x - left) / width;
+    const y = (mouse.y - top - window.scrollY) / height;
+    tween.change({ to: [x, y] });
+  };
 });
 
-document.body.appendChild(section);
+onUnmounted(() => {
+  tween.dispose();
+});
 
-const point = document.createElement("div");
-point.setAttribute(
-  "style",
-  `
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  border-radius: 100%;
-  background: #F07;
-`
-);
-section.appendChild(point);
-
-document.body.appendChild(section);
+const code = ref(`import { DynamicTween } from "tweenkle";
 
 const tween = new DynamicTween({
   from: [0, 0],
   to: [0.5, 0.5],
-  msPerUnit: 2000,
-  onUpdate: ([x, y]: number[]) => {
-    point.style.transform = `translateX(${x * SIDE_VW}vw) translateY(${
-      y * SIDE_VW
-    }vw)`;
-  },
-});
+  onUpdate: console.log,
+})
 
-section.addEventListener("click", () => {
-  const { left, top, width, height } = section.getBoundingClientRect();
-  const x = (mouse.x - left) / width;
-  const y = (mouse.y - top) / height;
-  tween.change({ to: [x, y] });
-});
-
-setTimeout(() => {
-  console.log(tween);
-}, 2000);
+// Change position after 500ms
+setTimeout(() => tween.change({ to: [x, y] }), 500)`);
 </script>
 
 <template>
   <div class="prose">
-    <h1 class="example-title">Dynamic tween follow 2D points</h1>
+    <h1 class="example-title">Dynamic tween follow a 2D point</h1>
 
-    <p>
-      <CodePart :code="code" />
+    <CodePart :code="code" />
 
-      <span class="form-control !inline-flex mr-2">
-        <label class="input-group input-group-xs">
-          <span class="bg-primary text-primary-content px-2">x1</span>
-          <input
-            v-model="x1"
-            type="text"
-            placeholder="x1"
-            class="input input-bordered input-primary w-14 px-1 h-auto"
-          />
-        </label>
-      </span>
-      <span class="form-control !inline-flex mr-2">
-        <label class="input-group input-group-xs">
-          <span class="bg-primary text-primary-content px-2">y1</span>
-          <input
-            v-model="y1"
-            type="text"
-            placeholder="y1"
-            class="input input-bordered input-primary w-14 px-1 h-auto"
-          />
-        </label>
-      </span>
-      <span class="form-control !inline-flex mr-2">
-        <label class="input-group input-group-xs">
-          <span class="bg-secondary text-secondary-content px-2">x2</span>
-          <input
-            v-model="x2"
-            type="text"
-            placeholder="x2"
-            class="input input-bordered w-14 px-1 h-auto"
-          />
-        </label>
-      </span>
-      <span class="form-control !inline-flex mr-2">
-        <label class="input-group input-group-xs">
-          <span class="bg-secondary text-secondary-content px-2">y2</span>
-          <input
-            v-model="y2"
-            type="text"
-            placeholder="y2"
-            class="input input-bordered w-14 px-1 h-auto"
-          />
-        </label>
-      </span>
-      <span class="form-control !inline-flex">
-        <label class="input-group input-group-xs">
-          <span class="bg-accent text-accent-content px-2">steps</span>
-          <input
-            v-model="steps"
-            type="text"
-            placeholder="steps"
-            class="input input-bordered w-14 px-1 h-auto input-accent"
-          />
-        </label>
-      </span>
-    </p>
-
-    <div class="relative">
-      <canvas ref="canvas" class="w-full"></canvas>
-      <!--  -->
-      <button
-        ref="prev"
-        :style="{
-          bottom: 0,
-          left: 0,
-          transform: `translateX(${Number(x1) * size}px) translateY(${
-            -Number(y1) * size
-          }px) translateX(${-gripSize / 2}px) translateY(${
-            -margin.bottom * size
-          }px) translateY(${gripSize / 2}px)`,
-          width: `${gripSize}px`,
-          height: `${gripSize}px`,
-        }"
-        class="absolute bg-primary rounded-full btn-outline"
-      ></button>
-      <button
-        ref="next"
-        :style="{
-          bottom: 0,
-          left: 0,
-          transform: `translateX(${Number(x2) * size}px) translateY(${
-            -Number(y2) * size
-          }px) translateX(${-gripSize / 2}px) translateY(${
-            -margin.bottom * size
-          }px) translateY(${gripSize / 2}px)`,
-          width: `${gripSize}px`,
-          height: `${gripSize}px`,
-        }"
-        class="absolute bg-secondary rounded-full btn-outline"
-      ></button>
+    <div class="-mt-2 -ml-2 p-2 overflow-hidden">
+      <div
+        ref="area"
+        class="w-full before:pt-[100%] before:relative before:block relative border"
+        @mousemove="onMouseMove"
+        @click="changeTween"
+      >
+        <div
+          class="w-full h-full absolute top-0 left-0"
+          :style="{ transform: pointTransform }"
+        >
+          <div
+            class="w-4 h-4 absolute -top-2 -left-2 bg-primary rounded-full"
+          ></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

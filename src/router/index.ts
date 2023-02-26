@@ -3,7 +3,7 @@ import DocView from "../views/DocView.vue";
 import ExamplesView from "../views/ExamplesView.vue";
 import CubicBezierView from "../views/examples/CubicBezierView.vue";
 import DynamicTweenFollowView from "../views/examples/DynamicTweenFollowView.vue";
-import TweenView from "../views/examples/TweenView.vue";
+import TweenChain from "../views/examples/TweenChainView.vue";
 import { RoutesName } from "./RoutesName";
 import type { Component } from "vue";
 import { description } from "../../tweenkle/package.json";
@@ -51,12 +51,12 @@ export const exampleRoutes: WebsiteRoute = {
       },
     },
     {
-      path: "tween",
-      name: RoutesName.ExamplesTween,
-      component: TweenView,
+      path: "chain-tween",
+      name: RoutesName.ExamplesChainTween,
+      component: TweenChain,
       meta: {
-        name: "tween",
-        title: "tween",
+        name: "Chain tweens",
+        title: "Chain tweens",
         description: "description",
       },
     },
