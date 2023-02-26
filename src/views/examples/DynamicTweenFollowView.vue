@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, computed } from "vue";
 import { DynamicTween } from "../../../tweenkle/src/tween/DynamicTween";
 
 const SIDE_VW = 75;

@@ -3,6 +3,7 @@ import DocView from "../views/DocView.vue";
 import ExamplesView from "../views/ExamplesView.vue";
 import CubicBezierView from "../views/examples/CubicBezierView.vue";
 import DynamicTweenFollowView from "../views/examples/DynamicTweenFollowView.vue";
+import TweenView from "../views/examples/TweenView.vue";
 import { RoutesName } from "./RoutesName";
 import type { Component } from "vue";
 import { description } from "../../tweenkle/package.json";
@@ -46,6 +47,16 @@ export const exampleRoutes: WebsiteRoute = {
       meta: {
         name: "dynamic tween 2D",
         title: "Dynamic tween follow a 2D point",
+        description: "description",
+      },
+    },
+    {
+      path: "tween",
+      name: RoutesName.ExamplesTween,
+      component: TweenView,
+      meta: {
+        name: "tween",
+        title: "tween",
         description: "description",
       },
     },

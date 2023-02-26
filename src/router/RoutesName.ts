@@ -3,5 +3,6 @@ export const enum RoutesName {
   Examples,
   ExamplesCubicBezier,
   ExamplesDynamicTweenFollow,
+  ExamplesTween,
   Docs,
 }
