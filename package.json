@@ -11,10 +11,10 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@tailwindcss/typography": "^0.5.9",
     "@vueuse/core": "^9.13.0",
     "daisyui": "^2.50.2",
-    "shiki": "^0.14.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
