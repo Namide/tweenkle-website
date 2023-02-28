@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
+import GraphicTimeline from "@/components/GraphicTimeline.vue";
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { DynamicTween } from "../../../tweenkle/src/tween/DynamicTween";
 
@@ -10,6 +11,8 @@ const position = ref({ x: 0, y: 0 });
 
 let changeTween: () => void;
 let tween: DynamicTween<[number, number]>;
+const graphicX = ref([position.value.x, position.value.x]);
+const graphicY = ref([position.value.y, position.value.y]);
 
 const pointTransform = computed(
   () =>
@@ -24,13 +27,14 @@ const onMouseMove = (event: MouseEvent) => {
 };
 
 onMounted(() => {
-  console.log("onMounted", tween);
   tween = new DynamicTween({
     from: [0, 0],
     to: [0.5, 0.5],
     onUpdate: ([x, y]: number[]) => {
       position.value.x = x;
       position.value.y = y;
+      graphicX.value[1] = x;
+      graphicY.value[1] = y;
     },
   });
 
@@ -44,6 +48,8 @@ onMounted(() => {
       };
     const x = (mouse.x - left) / width;
     const y = (mouse.y - top - window.scrollY) / height;
+    graphicX.value[0] = x;
+    graphicY.value[0] = y;
     tween.change({ to: [x, y] });
   };
 });
@@ -87,6 +93,10 @@ setTimeout(() => tween.change({ to: [x, y] }), 500)`);
         </div>
       </div>
     </div>
+
+    <GraphicTimeline :position="graphicX" :colors="['lightpink', 'crimson']" />
+
+    <GraphicTimeline :position="graphicY" :colors="['aqua', 'darkblue']" />
   </div>
 </template>
 
