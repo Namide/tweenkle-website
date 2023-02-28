@@ -5,4 +5,8 @@ export const enum RoutesName {
   ExamplesDynamicTweenFollow,
   ExamplesChainTween,
   Docs,
+  DocsDynamicTween,
+  DocsTween,
+  DocsCubicBezier,
+  DocsEquations,
 }
