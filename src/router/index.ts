@@ -3,6 +3,7 @@ import ExamplesView from "../views/ExamplesView.vue";
 import ExamplesCubicBezierView from "../views/examples/CubicBezierView.vue";
 import ExamplesDynamicTweenFollowView from "../views/examples/DynamicTweenFollowView.vue";
 import ExamplesTweenChain from "../views/examples/TweenChainView.vue";
+import SmoothPathView from "../views/examples/SmoothPathView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
@@ -60,6 +61,16 @@ export const exampleRoutes: WebsiteRoute = {
       meta: {
         name: "Chain tweens",
         title: "Chain tweens",
+        description: "description",
+      },
+    },
+    {
+      path: "smooth-path",
+      name: RoutesName.ExamplesSmoothPath,
+      component: SmoothPathView,
+      meta: {
+        name: "Smooth path",
+        title: "Smooth path",
         description: "description",
       },
     },
