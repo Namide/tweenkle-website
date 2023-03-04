@@ -27,9 +27,7 @@ const onMouseMove = (event: MouseEvent) => {
 };
 
 onMounted(() => {
-  tween = new DynamicTween({
-    from: [0, 0],
-    to: [0.5, 0.5],
+  tween = new DynamicTween([0.5, 0.5], {
     onUpdate: ([x, y]: number[]) => {
       position.value.x = x;
       position.value.y = y;
@@ -50,7 +48,7 @@ onMounted(() => {
     const y = (mouse.y - top - window.scrollY) / height;
     graphicX.value[0] = x;
     graphicY.value[0] = y;
-    tween.change({ to: [x, y] });
+    tween.change([x, y]);
   };
 });
 
