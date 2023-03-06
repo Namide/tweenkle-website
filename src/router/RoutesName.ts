@@ -6,6 +6,7 @@ export const enum RoutesName {
   ExamplesChainTween,
   ExamplesSmoothPath,
   Docs,
+  DocsInstallation,
   DocsDynamicTween,
   DocsTween,
   DocsCubicBezier,

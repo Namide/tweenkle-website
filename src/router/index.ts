@@ -6,6 +6,7 @@ import ExamplesTweenChain from "../views/examples/TweenChainView.vue";
 import SmoothPathView from "../views/examples/SmoothPathView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
+import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
 import { RoutesName } from "./RoutesName";
@@ -87,6 +88,16 @@ export const docsRoutes: WebsiteRoute = {
     description,
   },
   children: [
+    {
+      path: "installation",
+      name: RoutesName.DocsInstallation,
+      component: DocsInstallation,
+      meta: {
+        name: "installation",
+        title: "Installation",
+        description: "installation",
+      },
+    },
     {
       path: "cubic-bezier",
       name: RoutesName.DocsCubicBezier,
