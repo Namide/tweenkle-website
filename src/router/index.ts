@@ -21,6 +21,7 @@ type WebsiteRoute = {
     name: string;
     title: string;
     description: string;
+    [key: string]: string;
   };
   children?: WebsiteRoute[];
 };
@@ -96,16 +97,7 @@ export const docsRoutes: WebsiteRoute = {
         name: "installation",
         title: "Installation",
         description: "installation",
-      },
-    },
-    {
-      path: "cubic-bezier",
-      name: RoutesName.DocsCubicBezier,
-      component: DocsCubicBezier,
-      meta: {
-        name: "cubicBezier",
-        title: "Cubic-Bezier",
-        description: "description",
+        group: "Getting started",
       },
     },
     {
@@ -113,9 +105,10 @@ export const docsRoutes: WebsiteRoute = {
       name: RoutesName.DocsTween,
       component: DocsTweenView,
       meta: {
-        name: "Tween",
-        title: "Tween",
+        name: "Simple tween",
+        title: "Simple tween",
         description: "description",
+        group: "Tweens",
       },
     },
     {
@@ -126,6 +119,18 @@ export const docsRoutes: WebsiteRoute = {
         name: "Dynamic Tween",
         title: "Dynamic tween",
         description: "description",
+        group: "Tweens",
+      },
+    },
+    {
+      path: "cubic-bezier",
+      name: RoutesName.DocsCubicBezier,
+      component: DocsCubicBezier,
+      meta: {
+        name: "cubicBezier",
+        title: "Cubic-Bezier",
+        description: "description",
+        group: "Equations",
       },
     },
   ],

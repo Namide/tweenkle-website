@@ -9,7 +9,7 @@ new Tween(
   [10, 50],   // from 10 to 50 
   {     
     duration: 1000,         // in 1 second (1000ms)
-    onUpdate: console.log   // display on each frame
+    onUpdate: console.log   // display value on each frame
   }
 );`;
 </script>
