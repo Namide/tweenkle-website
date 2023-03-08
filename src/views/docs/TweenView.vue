@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
 
-const code = `import { Tween } from "tweenkle";
+const code = `import { Tween } from "tweenkle"
 
-const tween = new Tween([[0, 0], [0.5, 0.5]], {
-  delay: 1000,
-  duration: 2000,
-  onUpdate: console.log
-});
-
-new Tween([[0.5, 0.5], [0, 1]], {
-  delay: 3000,
-  duration: 2000,
-  // Use same timer to chain tweens
-  timer: tween.timer,
-  onUpdate: console.log
-});`;
+const tween = new Tween(
+  [
+    5, // from value
+    10 // to value
+  ],
+  {
+    delay: 1000, // delay of 1 second before tween
+    duration: 2000, // 2 seconds of animation
+    ease: easeInOutCubic // Cubic easing equation
+  }
+)`;
 </script>
 
 <template>

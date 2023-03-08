@@ -10,11 +10,10 @@ const pointTransform = computed(
       position.value.y * 100
     }%)`
 );
-let tweenA: Tween<number[]>;
-let tweenB: Tween<number[]>;
+let tween: Tween<number[]>;
 
 onMounted(() => {
-  tweenA = new Tween(
+  tween = new Tween(
     [
       [0, 0],
       [0.5, 0.5],
@@ -26,56 +25,57 @@ onMounted(() => {
         position.value = { x, y };
       },
     }
-  );
-
-  // eslint-disable-next-line no-new
-  tweenB = new Tween(
-    [
-      [0.5, 0.5],
-      [0, 1],
-    ],
-    {
-      delay: 3000,
-      duration: 2000,
-      timer: tweenA.timer,
-      onUpdate: ([x, y]) => {
-        position.value = { x, y };
-      },
-    }
-  );
+  ).to([0, 1], {
+    duration: 2000,
+    onUpdate: ([x, y]) => {
+      position.value = { x, y };
+    },
+  });
 });
 
 onUnmounted(() => {
-  tweenA.dispose();
-  tweenB.dispose();
+  tween.dispose();
 });
 
-const code = ref(`import { Tween } from "tweenkle";
+const chainCode = ref(`import { Tween } from "tweenkle";
 
-const tween = new Tween(
+new Tween(
   [
-    [0, 0],
-    [0.5, 0.5],
+    [0, 0], // from 2D position
+    [0.5, 0.5], // to 2D position
   ],
   {
     delay: 1000,
     duration: 2000,
     onUpdate: console.log
   }
-);
+).chain(
+  [
+    [0.5, 0.5], // from new 2D position
+    [0, 1], // to 2D position
+  ],
+  {
+    duration: 2000,
+    onUpdate: console.log
+  }
+);`);
+
+const toCode = ref(`import { Tween } from "tweenkle";
 
 new Tween(
   [
-    [0.5, 0.5],
-    [0, 1],
+    [0, 0], // from 2D position
+    [0.5, 0.5], // to 2D position
   ],
   {
-    from: [0.5, 0.5],
-    to: [0, 1],
-    delay: 3000,
+    delay: 1000,
     duration: 2000,
-    // Use same timer to chain tweens
-    timer: tween.timer,
+    onUpdate: console.log
+  }
+).to(
+  [0, 1], // to 2D position
+  {
+    duration: 2000,
     onUpdate: console.log
   }
 );`);
@@ -85,7 +85,13 @@ new Tween(
   <div class="prose">
     <h1 class="example-title">Chain tweens</h1>
 
-    <CodePart :code="code" />
+    <p>Add new position to chain after the tween</p>
+
+    <CodePart :code="toCode" />
+
+    <p>Add new tween to chain after the tween</p>
+
+    <CodePart :code="chainCode" />
 
     <div class="-mt-2 -ml-2 p-2 overflow-hidden">
       <div
