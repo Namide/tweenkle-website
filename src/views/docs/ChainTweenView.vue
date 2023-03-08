@@ -83,7 +83,7 @@ new Tween(
 
 <template>
   <div class="prose">
-    <h1 class="example-title">Tween</h1>
+    <h1 class="example-title">Chain tweens</h1>
 
     <CodePart :code="code" />
 

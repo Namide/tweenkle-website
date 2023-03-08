@@ -1,23 +1,72 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
+import DynamicTween2D from "@/components/DynamicTween2D.vue";
 
-const code = `import { DynamicTween } from "tweenkle";
+const code1 = `import { DynamicTween } from "tweenkle";
 
-const tween = new DynamicTween({
-  from: [0, 0],
-  to: [0.5, 0.5],
-  onUpdate: console.log,
-})
+const tween = new DynamicTween(
+  [0, 0], // 2 dimention position
+  { onUpdate: console.log }
+)
 
 // Change position after 500ms
-setTimeout(() => tween.change({ to: [x, y] }), 500)`;
+setTimeout(() =>
+  tween.change([
+    Math.random(),
+    Math.random()
+  ]),
+  500
+)`;
+
+const code2 = `import {
+  DynamicTween,
+  easeInOutCubic,
+  easeInOutCubic 
+} from "tweenkle/src/easing/easing"
+
+// 3D object position
+let position3D = { x: 145, y: 325, z: 952 }
+
+// Create the dynamic tween
+const tween = new DynamicTween(
+  [ position3D.x, position3D.y, position3D.z ],
+  {
+    onUpdate: ([x, y, z]) => {
+      position3D.x = x;
+      position3D.y = y;
+      position3D.z = z;
+    },
+    duration: 750, // 0.75 seconds of animation
+    ease: easeInOutCubic // Cubic easing equation
+  }
+)
+
+// Change position after 3 seconds
+setTimeout(() => tween.change([35, 78, 90]), 3000)
+
+// Change position after 3.5 seconds
+setTimeout(
+  () =>
+  tween.change(
+    [32, 54, 87],
+    { 
+      duration: 1000, // Use 1 seconds for this change
+      ease: easeInOutCirc // Use circle easing for this change
+    }
+  ),
+  3500
+)`;
 </script>
 
 <template>
   <div class="prose">
     <h1 class="example-title">Dynamic tween follow a 2D point</h1>
 
-    <CodePart :code="code" />
+    <CodePart :code="code1" />
+
+    <DynamicTween2D />
+
+    <CodePart :code="code2" />
   </div>
 </template>
 

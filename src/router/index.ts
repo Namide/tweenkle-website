@@ -2,10 +2,10 @@ import HomeView from "../views/HomeView.vue";
 import ExamplesView from "../views/ExamplesView.vue";
 import ExamplesCubicBezierView from "../views/examples/CubicBezierView.vue";
 import ExamplesDynamicTweenFollowView from "../views/examples/DynamicTweenFollowView.vue";
-import ExamplesTweenChain from "../views/examples/TweenChainView.vue";
 import SmoothPathView from "../views/examples/SmoothPathView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
+import DocsChainTween from "../views/docs/ChainTweenView.vue";
 import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
@@ -57,16 +57,6 @@ export const exampleRoutes: WebsiteRoute = {
       },
     },
     {
-      path: "chain-tween",
-      name: RoutesName.ExamplesChainTween,
-      component: ExamplesTweenChain,
-      meta: {
-        name: "Chain tweens",
-        title: "Chain tweens",
-        description: "description",
-      },
-    },
-    {
       path: "smooth-path",
       name: RoutesName.ExamplesSmoothPath,
       component: SmoothPathView,
@@ -107,6 +97,17 @@ export const docsRoutes: WebsiteRoute = {
       meta: {
         name: "Simple tween",
         title: "Simple tween",
+        description: "description",
+        group: "Tweens",
+      },
+    },
+    {
+      path: "chain-tweens",
+      name: RoutesName.DocsChainTween,
+      component: DocsChainTween,
+      meta: {
+        name: "Chain tween",
+        title: "Chain tween",
         description: "description",
         group: "Tweens",
       },
