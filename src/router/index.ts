@@ -9,6 +9,7 @@ import DocsChainTween from "../views/docs/ChainTweenView.vue";
 import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
+import DocsSmoothPathView from "../views/docs/SmoothPathView.vue";
 import { RoutesName } from "./RoutesName";
 import type { Component } from "vue";
 import { description } from "../../tweenkle/package.json";
@@ -132,6 +133,17 @@ export const docsRoutes: WebsiteRoute = {
         title: "Cubic-Bezier",
         description: "description",
         group: "Equations",
+      },
+    },
+    {
+      path: "smooth-path",
+      name: RoutesName.DocsSmoothPath,
+      component: DocsSmoothPathView,
+      meta: {
+        name: "Smooth path",
+        title: "Smooth path",
+        description: "description",
+        group: "Path",
       },
     },
   ],
