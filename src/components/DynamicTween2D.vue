@@ -47,7 +47,7 @@ onMounted(() => {
     const y = (mouse.y - top - window.scrollY) / height;
     graphicX.value[0] = x;
     graphicY.value[0] = y;
-    tween.change([x, y]);
+    tween.to([x, y]);
   };
 });
 

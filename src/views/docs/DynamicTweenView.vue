@@ -11,7 +11,7 @@ const tween = new DynamicTween(
 
 // Change position after 500ms
 setTimeout(() =>
-  tween.change([
+  tween.to([
     Math.random(),
     Math.random()
   ]),
@@ -42,12 +42,12 @@ const tween = new DynamicTween(
 )
 
 // Change position after 3 seconds
-setTimeout(() => tween.change([35, 78, 90]), 3000)
+setTimeout(() => tween.to([35, 78, 90]), 3000)
 
 // Change position after 3.5 seconds
 setTimeout(
   () =>
-  tween.change(
+  tween.to(
     [32, 54, 87],
     { 
       duration: 1000, // Use 1 seconds for this change

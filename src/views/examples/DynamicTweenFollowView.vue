@@ -48,7 +48,7 @@ onMounted(() => {
     const y = (mouse.y - top - window.scrollY) / height;
     graphicX.value[0] = x;
     graphicY.value[0] = y;
-    tween.change([x, y]);
+    tween.to([x, y]);
   };
 });
 
@@ -65,7 +65,7 @@ const tween = new DynamicTween({
 })
 
 // Change position after 500ms
-setTimeout(() => tween.change({ to: [x, y] }), 500)`);
+setTimeout(() => tween.to({ to: [x, y] }), 500)`);
 </script>
 
 <template>
