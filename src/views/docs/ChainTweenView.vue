@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
 import { ref, onMounted, computed, onUnmounted } from "vue";
-import { Tween } from "../../../tweenkle/src/tween/Tween";
+import { Tween } from "../../../twon/src/tween/Tween";
 
 const position = ref({ x: 0, y: 0 });
 const pointTransform = computed(
@@ -37,7 +37,7 @@ onUnmounted(() => {
   tween.dispose();
 });
 
-const chainCode = ref(`import { Tween } from "tweenkle";
+const chainCode = ref(`import { Tween } from "twon";
 
 new Tween(
   [
@@ -60,7 +60,7 @@ new Tween(
   }
 );`);
 
-const toCode = ref(`import { Tween } from "tweenkle";
+const toCode = ref(`import { Tween } from "twon";
 
 new Tween(
   [

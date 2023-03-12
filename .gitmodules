@@ -1,3 +1,3 @@
-[submodule "tweenkle"]
-	path = tweenkle
-	url = git@github.com:Namide/tweenkle.git
+[submodule "twon"]
+	path = twon
+	url = git@github.com:Namide/twon.git

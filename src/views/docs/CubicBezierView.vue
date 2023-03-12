@@ -2,7 +2,7 @@
 import CodePart from "@/components/CodePart.vue";
 import DynamicCubicBezier from "@/components/DynamicCubicBezier.vue";
 
-const code = `import { cubicBezier } from "tweenkle"
+const code = `import { cubicBezier } from "twon"
 
 const easing = cubicBezier()
 

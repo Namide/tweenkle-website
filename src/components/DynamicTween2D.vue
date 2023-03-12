@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GraphicTimeline from "@/components/GraphicTimeline.vue";
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { DynamicTween } from "../../tweenkle/src/tween/DynamicTween";
+import { DynamicTween } from "../../twon/src/tween/DynamicTween";
 
 const mouse = { x: 0, y: 0 };
 

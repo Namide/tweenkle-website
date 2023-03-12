@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
-import { name } from "../../../tweenkle/package.json";
+import { name } from "../../../twon/package.json";
 
 const code = `// Import the library
-import { Tween } from "tweenkle"
+import { Tween } from "twon"
 
 new Tween(
   [10, 50],   // from 10 to 50 

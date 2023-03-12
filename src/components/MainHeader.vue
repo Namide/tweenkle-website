@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { docsRoutes, exampleRoutes } from "@/router";
-import type { RouteLocation } from "vue-router";
 </script>
 
 <template>

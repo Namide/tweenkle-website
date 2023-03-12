@@ -3,9 +3,9 @@ import { ref, watch, onMounted, computed } from "vue";
 import {
   cubicBezier,
   defaultCubicBezier,
-} from "../../tweenkle/src/easing/cubicBezier";
+} from "../../twon/src/easing/cubicBezier";
 import { useWindowSize, useDraggable } from "@vueuse/core";
-import { name } from "../../tweenkle/package.json";
+import { name } from "../../twon/package.json";
 import useUpdateHead from "@/composable/useUpdateHead";
 import CodePart from "@/components/CodePart.vue";
 

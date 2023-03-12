@@ -2,7 +2,7 @@
 import CodePart from "@/components/CodePart.vue";
 import DynamicTween2D from "@/components/DynamicTween2D.vue";
 
-const code1 = `import { DynamicTween } from "tweenkle";
+const code1 = `import { DynamicTween } from "twon";
 
 const tween = new DynamicTween(
   [0, 0], // 2 dimention position
@@ -22,7 +22,7 @@ const code2 = `import {
   DynamicTween,
   easeInOutCubic,
   easeInOutCubic 
-} from "tweenkle/src/easing/easing"
+} from "twon/src/easing/easing"
 
 // 3D object position
 let position3D = { x: 145, y: 325, z: 952 }

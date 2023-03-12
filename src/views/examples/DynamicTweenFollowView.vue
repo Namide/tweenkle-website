@@ -2,7 +2,7 @@
 import CodePart from "@/components/CodePart.vue";
 import GraphicTimeline from "@/components/GraphicTimeline.vue";
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { DynamicTween } from "../../../tweenkle/src/tween/DynamicTween";
+import { DynamicTween } from "../../../twon/src/tween/DynamicTween";
 
 const mouse = { x: 0, y: 0 };
 
@@ -56,7 +56,7 @@ onUnmounted(() => {
   tween.dispose();
 });
 
-const code = ref(`import { DynamicTween } from "tweenkle";
+const code = ref(`import { DynamicTween } from "twon";
 
 const tween = new DynamicTween({
   from: [0, 0],

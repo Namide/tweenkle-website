@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from "vue";
-import { SmoothPath } from "../../../tweenkle/src/path/SmoothPath";
+import { SmoothPath } from "../../../twon/src/path/SmoothPath";
 import { useWindowSize } from "@vueuse/core";
-import { name } from "../../../tweenkle/package.json";
+import { name } from "../../../twon/package.json";
 import useUpdateHead from "@/composable/useUpdateHead";
 import CodePart from "@/components/CodePart.vue";
 

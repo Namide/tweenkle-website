@@ -12,7 +12,7 @@ import DocsTweenView from "../views/docs/TweenView.vue";
 import DocsSmoothPathView from "../views/docs/SmoothPathView.vue";
 import { RoutesName } from "./RoutesName";
 import type { Component } from "vue";
-import { description } from "../../tweenkle/package.json";
+import { description } from "../../twon/package.json";
 
 type WebsiteRoute = {
   path: string;
