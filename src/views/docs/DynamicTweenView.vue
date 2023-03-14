@@ -4,10 +4,8 @@ import DynamicTween2D from "@/components/DynamicTween2D.vue";
 
 const code1 = `import { DynamicTween } from "twon";
 
-const tween = new DynamicTween(
-  [0, 0], // 2 dimention position
-  { onUpdate: console.log }
-)
+const tween = new DynamicTween([0, 0]) // 2 dimention position
+  .on("update", console.log)
 
 // Change position after 500ms
 setTimeout(() =>
@@ -29,17 +27,17 @@ let position3D = { x: 145, y: 325, z: 952 }
 
 // Create the dynamic tween
 const tween = new DynamicTween(
-  [ position3D.x, position3D.y, position3D.z ],
-  {
-    onUpdate: ([x, y, z]) => {
-      position3D.x = x;
-      position3D.y = y;
-      position3D.z = z;
-    },
-    duration: 750, // 0.75 seconds of animation
-    ease: easeInOutCubic // Cubic easing equation
-  }
-)
+    [ position3D.x, position3D.y, position3D.z ],
+    {
+      duration: 750, // 0.75 seconds of animation
+      ease: easeInOutCubic // Cubic easing equation
+    }
+  )
+  .on("update", ([x, y, z]) => {
+    position3D.x = x;
+    position3D.y = y;
+    position3D.z = z;
+  })
 
 // Change position after 3 seconds
 setTimeout(() => tween.to([35, 78, 90]), 3000)

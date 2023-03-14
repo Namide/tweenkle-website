@@ -27,14 +27,15 @@ const onMouseMove = (event: MouseEvent) => {
 };
 
 onMounted(() => {
-  tween = new DynamicTween([0.5, 0.5], {
-    onUpdate: ([x, y]: number[]) => {
+  tween = new DynamicTween([0.5, 0.5] as [number, number]).on(
+    "update",
+    ([x, y]: number[]) => {
       position.value.x = x;
       position.value.y = y;
       graphicX.value[1] = x;
       graphicY.value[1] = y;
-    },
-  });
+    }
+  );
 
   changeTween = () => {
     const { left, top, width, height } =
@@ -59,10 +60,10 @@ onUnmounted(() => {
 const code = ref(`import { DynamicTween } from "twon";
 
 const tween = new DynamicTween({
-  from: [0, 0],
-  to: [0.5, 0.5],
-  onUpdate: console.log,
-})
+    from: [0, 0],
+    to: [0.5, 0.5]
+  })
+  .on('update', console.log);
 
 // Change position after 500ms
 setTimeout(() => tween.to({ to: [x, y] }), 500)`);

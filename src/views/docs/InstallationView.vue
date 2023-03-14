@@ -6,12 +6,10 @@ const code = `// Import the library
 import { Tween } from "twon"
 
 new Tween(
-  [10, 50],   // from 10 to 50 
-  {     
-    duration: 1000,         // in 1 second (1000ms)
-    onUpdate: console.log   // display value on each frame
-  }
-);`;
+    [10, 50],           // from 10 to 50 
+    { duration: 1000 }  // in 1 second (1000ms)
+  )
+  .on('update', console.log); // display value on each frame`;
 </script>
 
 <template>

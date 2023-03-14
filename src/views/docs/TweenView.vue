@@ -11,9 +11,9 @@ const tween = new Tween(
   {
     delay: 1000, // delay of 1 second before tween
     duration: 2000, // 2 seconds of animation
-    ease: easeInOutCubic // Cubic easing equation
+    ease: easeInOutCubic, // Cubic easing equation
   }
-)`;
+).on('update', console.log)`;
 </script>
 
 <template>

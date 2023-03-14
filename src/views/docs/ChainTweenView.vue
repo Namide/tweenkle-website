@@ -10,27 +10,28 @@ const pointTransform = computed(
       position.value.y * 100
     }%)`
 );
-let tween: Tween<number[]>;
+let tween: Tween<[number, number]>;
 
 onMounted(() => {
   tween = new Tween(
     [
       [0, 0],
       [0.5, 0.5],
-    ],
+    ] as [number, number][],
     {
       delay: 1000,
       duration: 2000,
-      onUpdate: ([x, y]) => {
-        position.value = { x, y };
-      },
     }
-  ).to([0, 1], {
-    duration: 2000,
-    onUpdate: ([x, y]) => {
+  )
+    .on("update", ([x, y]: [number, number]) => {
       position.value = { x, y };
-    },
-  });
+    })
+    .to([0, 1], {
+      duration: 2000,
+    })
+    .on("update", ([x, y]: [number, number]) => {
+      position.value = { x, y };
+    });
 });
 
 onUnmounted(() => {
@@ -40,45 +41,47 @@ onUnmounted(() => {
 const chainCode = ref(`import { Tween } from "twon";
 
 new Tween(
-  [
-    [0, 0], // from 2D position
-    [0.5, 0.5], // to 2D position
-  ],
-  {
-    delay: 1000,
-    duration: 2000,
-    onUpdate: console.log
-  }
-).chain(
-  [
-    [0.5, 0.5], // from new 2D position
-    [0, 1], // to 2D position
-  ],
-  {
-    duration: 2000,
-    onUpdate: console.log
-  }
-);`);
+    [
+      [0, 0], // from 2D position
+      [0.5, 0.5], // to 2D position
+    ],
+    {
+      delay: 1000,
+      duration: 2000
+    }
+  )
+  .on("update", console.log)
+  .chain(
+    [
+      [0.5, 0.5], // from new 2D position
+      [0, 1], // to 2D position
+    ],
+    {
+      duration: 2000
+    }
+  )
+  .on("update", console.log);`);
 
 const toCode = ref(`import { Tween } from "twon";
 
 new Tween(
-  [
-    [0, 0], // from 2D position
-    [0.5, 0.5], // to 2D position
-  ],
-  {
-    delay: 1000,
-    duration: 2000,
-    onUpdate: console.log
-  }
-).to(
-  [0, 1], // to 2D position
-  {
-    duration: 2000,
-    onUpdate: console.log
-  }
-);`);
+    [
+      [0, 0], // from 2D position
+      [0.5, 0.5], // to 2D position
+    ],
+    {
+      delay: 1000,
+      duration: 2000
+    }
+  )
+  .on("update", console.log)
+  .to(
+    [0, 1], // to 2D position
+    {
+      duration: 2000
+    }
+  )
+  .on("update", console.log);`);
 </script>
 
 <template>
