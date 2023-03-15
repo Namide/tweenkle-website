@@ -6,6 +6,7 @@ import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
 import DocsSmoothPathView from "../views/docs/SmoothPathView.vue";
+import ErrorView from "../views/ErrorView.vue";
 import { RoutesName } from "./RoutesName";
 import type { Component } from "vue";
 import { description } from "../../twon/package.json";
@@ -114,6 +115,16 @@ const routes: WebsiteRoute[] = [
     },
   },
   docsRoutes,
+  {
+    path: "/:pathMatch(.*)*",
+    name: RoutesName.NotFound,
+    component: ErrorView,
+    meta: {
+      name: "name",
+      title: "title",
+      description: "description",
+    },
+  },
 ];
 
 export default routes;
