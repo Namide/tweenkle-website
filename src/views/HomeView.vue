@@ -5,11 +5,7 @@ useUpdateHead();
 </script>
 
 <template>
-  <main class="flex-1">
-    <div class="mockup-code before:hidden">
-      <pre data-prefix="1"><code>npm i daisyui</code></pre>
-    </div>
-  </main>
+  <main class="flex-1"></main>
 </template>
 
 <style scoped></style>

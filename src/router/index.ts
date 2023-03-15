@@ -1,8 +1,4 @@
 import HomeView from "../views/HomeView.vue";
-import ExamplesView from "../views/ExamplesView.vue";
-import ExamplesCubicBezierView from "../views/examples/CubicBezierView.vue";
-import ExamplesDynamicTweenFollowView from "../views/examples/DynamicTweenFollowView.vue";
-import SmoothPathView from "../views/examples/SmoothPathView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
 import DocsChainTween from "../views/docs/ChainTweenView.vue";
@@ -25,49 +21,6 @@ type WebsiteRoute = {
     [key: string]: string;
   };
   children?: WebsiteRoute[];
-};
-
-export const exampleRoutes: WebsiteRoute = {
-  path: "/examples",
-  name: RoutesName.Examples,
-  component: ExamplesView,
-  meta: {
-    name: "Examples",
-    title: "Examples",
-    description,
-  },
-  children: [
-    {
-      path: "cubic-bezier",
-      name: RoutesName.ExamplesCubicBezier,
-      component: ExamplesCubicBezierView,
-      meta: {
-        name: "cubicBezier",
-        title: "Cubic-Bezier",
-        description: "description",
-      },
-    },
-    {
-      path: "dynamic-tween-2d",
-      name: RoutesName.ExamplesDynamicTweenFollow,
-      component: ExamplesDynamicTweenFollowView,
-      meta: {
-        name: "dynamic tween 2D",
-        title: "Dynamic tween follow a 2D point",
-        description: "description",
-      },
-    },
-    {
-      path: "smooth-path",
-      name: RoutesName.ExamplesSmoothPath,
-      component: SmoothPathView,
-      meta: {
-        name: "Smooth path",
-        title: "Smooth path",
-        description: "description",
-      },
-    },
-  ],
 };
 
 export const docsRoutes: WebsiteRoute = {
@@ -161,7 +114,6 @@ const routes: WebsiteRoute[] = [
     },
   },
   docsRoutes,
-  exampleRoutes,
 ];
 
 export default routes;
