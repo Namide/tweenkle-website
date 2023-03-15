@@ -202,7 +202,7 @@ watch([size, smoothPath], updateDraw, {
     </div>
 
     <div class="relative">
-      <canvas ref="canvas" class="w-full"></canvas>
+      <canvas ref="canvas" class="w-full border rounded-md"></canvas>
 
       <button
         ref="next"

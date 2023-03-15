@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from "vue";
-import {
-  cubicBezier,
-  defaultCubicBezier,
-} from "../../twon/src/easing/cubicBezier";
+import { cubicBezier } from "../../twon/src/easing/cubicBezier";
 import { useWindowSize, useDraggable } from "@vueuse/core";
 import { name } from "../../twon/package.json";
 import useUpdateHead from "@/composable/useUpdateHead";
@@ -27,14 +24,12 @@ const x1 = ref("0.52");
 const y1 = ref("0.11");
 const x2 = ref("0.45");
 const y2 = ref("0.95");
-const steps = ref("100");
 
 let cubic = cubicBezier(
   Number(x1.value),
   Number(y1.value),
   Number(x2.value),
-  Number(y2.value),
-  Number(steps.value)
+  Number(y2.value)
 );
 
 useDraggable(prev, {
@@ -137,17 +132,12 @@ const updateInput = () => {
     Number(x1.value),
     Number(y1.value),
     Number(x2.value),
-    Number(y2.value),
-    Number(steps.value)
+    Number(y2.value)
   );
   updateDraw();
 };
 
-watch(x1, updateInput);
-watch(y1, updateInput);
-watch(x2, updateInput);
-watch(y2, updateInput);
-watch(steps, updateInput);
+watch([x1, y1, x2, y2], updateInput);
 
 const update = () => {
   updateSize();
@@ -162,9 +152,7 @@ onMounted(() => {
 const code = computed(
   () => `import { cubicBezier } from "${name}"
 
-const easing = cubicBezier(${x1.value}, ${y1.value}, ${x2.value}, ${y2.value}${
-    Number(steps) !== defaultCubicBezier.steps ? `, ${steps.value}` : ""
-  })
+const easing = cubicBezier(${x1.value}, ${y1.value}, ${x2.value}, ${y2.value})
 
 console.log(easing(0.5))
 // trace ${cubic(0.5)}`
@@ -258,17 +246,6 @@ watch(width, update);
             </label>
           </span>
         </div>
-        <span class="form-control">
-          <label class="input-group input-group-xs">
-            <span class="bg-accent text-accent-content px-2">steps</span>
-            <input
-              v-model="steps"
-              type="text"
-              placeholder="steps"
-              class="input input-bordered w-14 px-1 h-auto input-accent"
-            />
-          </label>
-        </span>
       </div>
     </div>
     <p>

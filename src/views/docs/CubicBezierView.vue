@@ -29,11 +29,6 @@ console.log(easing(0.5))
       <span class="text-secondary">points</span>.<br />Test it by move the grabs
       or the values below.<br />
     </p>
-    <p>
-      The
-      <span class="text-accent-content bg-accent px-1 rounded-lg">step</span>
-      value change the accuracy of the curve.
-    </p>
     <DynamicCubicBezier />
   </div>
 </template>
