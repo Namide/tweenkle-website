@@ -39,7 +39,7 @@ export const docsRoutes: WebsiteRoute = {
       name: RoutesName.DocsInstallation,
       component: DocsInstallation,
       meta: {
-        name: "installation",
+        name: "Installation",
         title: "Installation",
         description: "installation",
         group: "Getting started",
