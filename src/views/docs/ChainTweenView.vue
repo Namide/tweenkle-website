@@ -32,6 +32,11 @@ onMounted(() => {
     .on("update", ([x, y]: [number, number]) => {
       position.value = { x, y };
     });
+
+  setTimeout(() => {
+    console.log(`getTime():`, tween.getTime());
+    console.log(`getValue():`, tween.getValue());
+  }, 2100);
 });
 
 onUnmounted(() => {
