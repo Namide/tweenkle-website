@@ -1,7 +1,7 @@
 import HomeView from "../views/HomeView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
-import DocsChainTween from "../views/docs/ChainTweenView.vue";
+import DocsTimelineTween from "../views/docs/TimelineTweenView.vue";
 import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
@@ -57,12 +57,12 @@ export const docsRoutes: WebsiteRoute = {
       },
     },
     {
-      path: "chain-tweens",
-      name: RoutesName.DocsChainTween,
-      component: DocsChainTween,
+      path: "timeline-tweens",
+      name: RoutesName.DocsTimelineTween,
+      component: DocsTimelineTween,
       meta: {
-        name: "Chain tween",
-        title: "Chain tween",
+        name: "Timeline tween",
+        title: "Timeline tween",
         description: "description",
         group: "Tweens",
       },

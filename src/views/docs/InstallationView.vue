@@ -3,9 +3,9 @@ import CodePart from "@/components/CodePart.vue";
 import { name } from "../../../twon/package.json";
 
 const code = `// Import the library
-import { Tween } from "twon"
+import { SimpleTween } from "twon"
 
-new Tween(
+new SimpleTween(
     [10, 50],           // from 10 to 50 
     { duration: 1000 }  // in 1 second (1000ms)
   )

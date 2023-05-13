@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
 
-const code = `import { Tween } from "twon"
+const code = `import { SimpleTween } from "twon"
 
-const tween = new Tween(
+const tween = new SimpleTween(
   [
     5, // from value
     10 // to value
@@ -23,7 +23,7 @@ setTimeout(() => {
 
 <template>
   <div class="prose">
-    <h1 class="example-title">Tween</h1>
+    <h1 class="example-title">SimpleTween</h1>
 
     <CodePart :code="code" />
   </div>
