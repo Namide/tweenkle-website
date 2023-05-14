@@ -4,6 +4,7 @@ import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
 import DocsTimelineTween from "../views/docs/TimelineTweenView.vue";
 import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
+import DocsSimpleTweenView from "../views/docs/SimpleTweenView.vue";
 import DocsTweenView from "../views/docs/TweenView.vue";
 import DocsSmoothPathView from "../views/docs/SmoothPathView.vue";
 import ErrorView from "../views/ErrorView.vue";
@@ -50,10 +51,21 @@ export const docsRoutes: WebsiteRoute = {
       name: RoutesName.DocsTween,
       component: DocsTweenView,
       meta: {
+        name: "Tween",
+        title: "Tween",
+        description: "description",
+        group: "Auto tween",
+      },
+    },
+    {
+      path: "simple-tween",
+      name: RoutesName.DocsSimpleTween,
+      component: DocsSimpleTweenView,
+      meta: {
         name: "Simple tween",
         title: "Simple tween",
         description: "description",
-        group: "Tweens",
+        group: "Low level tweens",
       },
     },
     {
@@ -64,7 +76,7 @@ export const docsRoutes: WebsiteRoute = {
         name: "Timeline tween",
         title: "Timeline tween",
         description: "description",
-        group: "Tweens",
+        group: "Low level tweens",
       },
     },
     {
@@ -75,7 +87,7 @@ export const docsRoutes: WebsiteRoute = {
         name: "Dynamic Tween",
         title: "Dynamic tween",
         description: "description",
-        group: "Tweens",
+        group: "Low level tweens",
       },
     },
     {

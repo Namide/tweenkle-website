@@ -8,6 +8,7 @@ export const enum RoutesName {
   Docs,
   DocsInstallation,
   DocsDynamicTween,
+  DocsSimpleTween,
   DocsTween,
   DocsTimelineTween,
   DocsCubicBezier,

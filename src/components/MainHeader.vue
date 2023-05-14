@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { docsRoutes } from "@/router";
+import type { RouteRecordName } from "vue-router";
 </script>
 
 <template>
@@ -19,7 +20,7 @@ import { docsRoutes } from "@/router";
         <!-- Docs -->
         <li tabindex="0">
           <router-link
-            :to="{ name: docsRoutes.children?.[0].name as unknown as string }"
+            :to="{ name: docsRoutes.children?.[0].name as unknown as RouteRecordName }"
           >
             Docs
             <svg
@@ -38,7 +39,7 @@ import { docsRoutes } from "@/router";
             <li
               v-for="route of docsRoutes.children"
               :key="route.name"
-              :class="{ bordered: route.name as unknown as string === $route.name }"
+              :class="{ bordered: route.name as unknown as RouteRecordName === $route.name }"
             >
               <router-link :to="route">
                 {{ route.meta.name }}
