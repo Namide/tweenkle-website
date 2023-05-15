@@ -56,17 +56,7 @@ onMounted(() => {
 
     <p>
       Auto refresh a reference (Object or Array) to simplify Tween usage. For
-      example, it does not require to watch update event. On the other hand,
-      this high-level operation does not support
-      <RouterLink
-        :to="{ name: RoutesName.DocsSmoothPath as unknown as RouteRecordName }"
-        >Path</RouterLink
-      >
-      and
-      <RouterLink
-        :to="{ name: RoutesName.DocsSmoothPath as unknown as RouteRecordName }"
-        >Smooth path</RouterLink
-      >.
+      example, it does not require to watch update event.
     </p>
 
     <CodePart :code="code" />

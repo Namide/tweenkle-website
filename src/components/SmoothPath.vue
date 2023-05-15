@@ -175,20 +175,14 @@ watch([size, smoothPath], updateDraw, {
         </label>
       </div>
 
-      <div
-        v-if="!smoothLoop && equation === ErodeSmoothPath"
-        class="!inline-flex form-control mr-4 mb-4"
-      >
+      <div v-if="!smoothLoop" class="!inline-flex form-control mr-4 mb-4">
         <label class="label cursor-pointer">
           <span class="label-text mr-2">Start</span>
           <input type="checkbox" v-model="smoothStart" class="checkbox" />
         </label>
       </div>
 
-      <div
-        v-if="!smoothLoop && equation === ErodeSmoothPath"
-        class="!inline-flex form-control mr-4 mb-4"
-      >
+      <div v-if="!smoothLoop" class="!inline-flex form-control mr-4 mb-4">
         <label class="label cursor-pointer">
           <span class="label-text mr-2">End</span>
           <input type="checkbox" v-model="smoothEnd" class="checkbox" />
