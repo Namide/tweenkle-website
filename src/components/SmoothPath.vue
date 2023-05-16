@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from "vue";
 import { ErodeSmoothPath } from "../../twon/src/path/ErodeSmoothPath";
-import { AnchorSmoothPath } from "../../twon/src/path/AnchorSmoothPath";
+import { CheckpointSmoothPath } from "../../twon/src/path/CheckpointSmoothPath";
 import { useWindowSize } from "@vueuse/core";
 import { name } from "../../twon/package.json";
 import CodePart from "@/components/CodePart.vue";
@@ -18,8 +18,8 @@ const steps = ref("4");
 const smoothStart = ref(false);
 const smoothEnd = ref(false);
 const smoothLoop = ref(true);
-const equation = ref<typeof ErodeSmoothPath | typeof AnchorSmoothPath>(
-  AnchorSmoothPath
+const equation = ref<typeof ErodeSmoothPath | typeof CheckpointSmoothPath>(
+  CheckpointSmoothPath
 );
 
 const pathBase = ref([
@@ -77,11 +77,15 @@ onMounted(() => {
 
 const code = computed(
   () => `import { ${
-    equation.value === ErodeSmoothPath ? "ErodeSmoothPath" : "AnchorSmoothPath"
+    equation.value === ErodeSmoothPath
+      ? "ErodeSmoothPath"
+      : "CheckpointSmoothPath"
   } } from "${name}"
 
 const path = ${
-    equation.value === ErodeSmoothPath ? "ErodeSmoothPath" : "AnchorSmoothPath"
+    equation.value === ErodeSmoothPath
+      ? "ErodeSmoothPath"
+      : "CheckpointSmoothPath"
   }(
   ${JSON.stringify(
     pathBase.value.map(([a, b]) => [Number(a.toFixed(3)), Number(b.toFixed(3))])
@@ -154,7 +158,7 @@ watch([size, smoothPath], updateDraw, {
         class="select select-bordered select-sm mr-4 mb-4"
       >
         <option :value="ErodeSmoothPath">Erode</option>
-        <option :value="AnchorSmoothPath">Anchor</option>
+        <option :value="CheckpointSmoothPath">Anchor</option>
       </select>
 
       <!-- Steps -->

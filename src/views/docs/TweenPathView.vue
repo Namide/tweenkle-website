@@ -60,7 +60,7 @@ onMounted(() => {
         loop: true,
       },
       path: {
-        anchor: false,
+        checkpoint: false,
         loop: true,
       },
     }
