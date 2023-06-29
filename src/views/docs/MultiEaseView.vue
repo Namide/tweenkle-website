@@ -4,6 +4,7 @@ import CodePart from "@/components/CodePart.vue";
 import { Tween } from "../../../twon/src/tween/Tween";
 import { RoutesName } from "../../router/RoutesName";
 import type { RouteRecordName } from "vue-router";
+import { easeInBounce, easeOutBounce } from "../../../twon/src/easing/easing";
 
 const stick = ref<HTMLDivElement>();
 const progress = ref({ x: 0, y: 0 });
@@ -14,7 +15,7 @@ const positionStyle = computed(() => ({
 }));
 
 const code = computed(
-  () => `import { Tween } from "twon"
+  () => `import { Tween, easeInBounce } from "twon"
 
 const progress = { x: 0, y: 0 }
 
@@ -26,8 +27,8 @@ const tween = new Tween(
       { x: 0, y: 100 },
     ],
     {
-      duration: 2000,
-      ease: [0.61, 0.37, 0.41, 0.71],
+      duration: 4000,
+      ease: [{ ease: easeInBounce }, { ease: easeOutBounce }],
       timeline: {
         loop: true,
       },
@@ -54,8 +55,8 @@ onMounted(() => {
     ],
     {
       // delay: 1000,
-      duration: 2000,
-      ease: [0.61, 0.37, 0.41, 0.71],
+      duration: 4000,
+      ease: [{ ease: easeInBounce }, { ease: easeOutBounce }],
       timeline: {
         loop: true,
       },
@@ -72,13 +73,7 @@ onMounted(() => {
   <div class="prose">
     <h1 class="example-title">Tween path</h1>
 
-    <p>
-      Use Tween with a
-      <RouterLink
-        :to="{ name: RoutesName.DocsSmoothPath as unknown as RouteRecordName }"
-        >Smooth path</RouterLink
-      >.
-    </p>
+    <p>Use multiple easing in one tween.</p>
 
     <CodePart :code="code" />
 

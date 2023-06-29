@@ -1,6 +1,7 @@
 import HomeView from "../views/HomeView.vue";
 import DocsView from "../views/DocsView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
+import DocsMultiEase from "../views/docs/MultiEaseView.vue";
 import DocsTimelineTween from "../views/docs/TimelineTweenView.vue";
 import DocsInstallation from "../views/docs/InstallationView.vue";
 import DocsDynamicTweenView from "../views/docs/DynamicTweenView.vue";
@@ -109,6 +110,17 @@ export const docsRoutes: WebsiteRoute = {
       meta: {
         name: "cubicBezier",
         title: "Cubic-Bezier",
+        description: "description",
+        group: "Equations",
+      },
+    },
+    {
+      path: "multi-ease",
+      name: RoutesName.DocsMultiEase,
+      component: DocsMultiEase,
+      meta: {
+        name: "Multi easing",
+        title: "Multi-Easing",
         description: "description",
         group: "Equations",
       },

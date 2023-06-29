@@ -14,6 +14,7 @@ export const enum RoutesName {
   DocsTimelineTween,
   DocsCubicBezier,
   DocsEquations,
+  DocsMultiEase,
   DocsSmoothPath,
   NotFound,
 }
