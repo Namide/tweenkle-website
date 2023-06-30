@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CodePart from "@/components/CodePart.vue";
 
-const code = `import { SimpleTween } from "twon"
+const code = `import { SimpleTween, easeInOutCubic } from "twon"
 
 const tween = new SimpleTween(
   [

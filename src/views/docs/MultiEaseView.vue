@@ -4,7 +4,16 @@ import CodePart from "@/components/CodePart.vue";
 import { Tween } from "../../../twon/src/tween/Tween";
 import { RoutesName } from "../../router/RoutesName";
 import type { RouteRecordName } from "vue-router";
-import { easeInBounce, easeOutBounce } from "../../../twon/src/easing/easing";
+import {
+  easeInBounce,
+  easeInCirc,
+  easeInElastic,
+  easeInOutCirc,
+  easeInOutExpo,
+  easeOutBounce,
+  easeOutCirc,
+  easeOutElastic,
+} from "../../../twon/src/easing/easing";
 
 const stick = ref<HTMLDivElement>();
 const progress = ref({ x: 0, y: 0 });
@@ -20,23 +29,24 @@ const code = computed(
 const progress = { x: 0, y: 0 }
 
 const tween = new Tween(
-    progress.value,
-    [
-      { x: 100, y: 0 },
-      { x: 100, y: 100 },
-      { x: 0, y: 100 },
-    ],
-    {
-      duration: 4000,
-      ease: [{ ease: easeInBounce }, { ease: easeOutBounce }],
-      timeline: {
-        loop: true,
-      },
-      path: {
-        loop: true,
-      },
-    }
-  );`
+  progress.value,
+  [
+    { x: 100, y: 0 },
+    { x: 100, y: 100 },
+    { x: 0, y: 100 },
+  ],
+  {
+    duration: 4000,
+    ease: [easeInCirc, easeOutElastic, { ease: easeInOutExpo, time: 2 }],
+    timeline: {
+      loop: true,
+    },
+    path: {
+      checkpoint: false,
+      loop: true,
+    },
+  }
+);`
 );
 
 let tween: Tween<{ x: number; y: number }> | null = null;
@@ -54,9 +64,8 @@ onMounted(() => {
       { x: 0, y: 100 },
     ],
     {
-      // delay: 1000,
       duration: 4000,
-      ease: [{ ease: easeInBounce }, { ease: easeOutBounce }],
+      ease: [easeInCirc, easeOutElastic, { ease: easeInOutExpo, time: 2 }],
       timeline: {
         loop: true,
       },
@@ -73,7 +82,33 @@ onMounted(() => {
   <div class="prose">
     <h1 class="example-title">Tween path</h1>
 
-    <p>Use multiple easing in one tween.</p>
+    <p>Chain easing in one tween.</p>
+
+    <p>Can be a list of easing:</p>
+
+    <CodePart code="[ easeInCirc, easeOutElastic, easeInOutExpo ]" />
+
+    <p>You can add proportional time for each easing:</p>
+
+    <CodePart
+      code="[
+  { ease: easeInCirc, time: 2 },
+  { ease: easeOutElastic, time: 3 },
+  { ease: easeInOutExpo, time: 1 }
+]"
+    />
+
+    <p>You can add proportional value for each easing:</p>
+
+    <CodePart
+      code="[
+  { ease: easeInCirc, value: 2 },
+  { ease: easeOutElastic, value: 3 },
+  { ease: easeInOutExpo, value: 1 }
+]"
+    />
+
+    <p>Full example with Tween</p>
 
     <CodePart :code="code" />
 
