@@ -1,5 +1,6 @@
 export const enum RoutesName {
   Home,
+  Guides,
   Examples,
   ExamplesCubicBezier,
   ExamplesDynamicTweenFollow,

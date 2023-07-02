@@ -1,54 +1,68 @@
 <script setup lang="ts">
-import { docsRoutes } from "@/router";
+import SubMenu from "@/components/SubMenu.vue";
+import routes from "@/router";
+import { RoutesName } from "@/router/RoutesName";
+import { routesDocs } from "@/router/routesDocs";
+import { routesExamples } from "@/router/routesExample";
+import { routesGuides } from "@/router/routesGuide";
 import type { RouteRecordName } from "vue-router";
+
+const homeRoute = routes.find(({ name }) => name === RoutesName.Home);
+
+console.log(homeRoute);
 </script>
 
 <template>
   <header class="navbar bg-base-100">
     <div class="flex-1">
-      <router-link to="/" class="btn btn-ghost normal-case text-xl">
+      <router-link
+        :to="homeRoute?.path || '/'"
+        class="btn btn-ghost normal-case text-xl"
+      >
         <span class="text-primary">Tw</span
         ><!-- --><span class="text-secondary">on</span>
       </router-link>
     </div>
+
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
-        <!-- <li :class="{ bordered: '/examples/cubic-bezier' === $route.path }">
-          <router-link to="/examples/cubic-bezier">Examples</router-link>
-        </li> -->
-
-        <!-- Docs -->
-        <li tabindex="0">
-          <router-link
-            :to="{ name: docsRoutes.children?.[0].name as unknown as RouteRecordName }"
-          >
-            Docs
-            <svg
-              class="fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-              />
-            </svg>
-          </router-link>
-          <ul class="p-2 bg-base-100 z-10 right-0">
-            <li
-              v-for="route of docsRoutes.children"
-              :key="route.name"
-              :class="{ bordered: route.name as unknown as RouteRecordName === $route.name }"
-            >
-              <router-link :to="route">
-                {{ route.meta.name }}
-              </router-link>
-            </li>
-          </ul>
+        <li
+          v-if="homeRoute"
+          :class="{ bordered: homeRoute.name as unknown as RouteRecordName === $route.name }"
+        >
+          <router-link :to="homeRoute.path">{{
+            homeRoute.meta.name
+          }}</router-link>
         </li>
 
-        <!-- <li><a>Item 3</a></li> -->
+        <SubMenu :route="routesGuides">Guide</SubMenu>
+        <SubMenu :route="routesExamples">Examples</SubMenu>
+        <SubMenu :route="routesDocs">Doc</SubMenu>
+
+        <li>
+          <span class="!bg-transparent p-0">
+            <a
+              href="https://www.npmjs.com/package/twon"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-circle btn-ghost !py-0"
+            >
+              <img src="@/assets/img/npm.svg" class="w-9 h-6" alt="NPM" />
+            </a>
+          </span>
+        </li>
+        <li>
+          <span class="!bg-transparent p-0 mr-4">
+            <a
+              href="https://github.com/Namide/twon"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-circle btn-ghost !py-0"
+            >
+              <img src="@/assets/img/github.svg" class="w-6 h-6" alt="Github" />
+            </a>
+          </span>
+        </li>
       </ul>
     </div>
   </header>

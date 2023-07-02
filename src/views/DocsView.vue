@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { docsRoutes } from "@/router";
 import useUpdateHead from "@/composable/useUpdateHead";
+import { routesDocs } from "@/router/routesDocs";
 
 useUpdateHead();
 
 const menuList = computed(() => {
   return (
-    docsRoutes.children
+    routesDocs.children
       ?.reduce(
         (list, { meta }) =>
           list.indexOf(meta.group) < 0 ? [...list, meta.group] : list,
@@ -15,7 +15,7 @@ const menuList = computed(() => {
       )
       .map(
         (group) =>
-          docsRoutes.children?.filter((route) => route.meta.group === group) ||
+          routesDocs.children?.filter((route) => route.meta.group === group) ||
           []
       ) || []
   );
