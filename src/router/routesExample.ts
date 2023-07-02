@@ -1,4 +1,4 @@
-import DocsView from "../views/DocsView.vue";
+import MenuView from "../views/MenuView.vue";
 import DocsCubicBezier from "../views/docs/CubicBezierView.vue";
 import DocsMultiEase from "../views/docs/MultiEaseView.vue";
 import DocsTimelineTween from "../views/docs/TimelineTweenView.vue";
@@ -14,7 +14,7 @@ import type { WebsiteRoute } from "./route.type";
 export const routesExamples: WebsiteRoute = {
   path: "/example",
   name: RoutesName.Examples,
-  component: DocsView,
+  component: MenuView,
 
   meta: {
     name: "Examples",

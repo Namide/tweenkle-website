@@ -18,4 +18,11 @@ export const enum RoutesName {
   DocsMultiEase,
   DocsSmoothPath,
   NotFound,
+  GuidesEasing,
+  GuidesGettingStarted,
+  GuidesPath,
+  GuidesTweens,
+  GuidesWelcome,
+  GuidesWhenUseTwon,
+  GuidesWhyTwon,
 }
