@@ -8,8 +8,6 @@ import { routesGuides } from "@/router/routesGuide";
 import type { RouteRecordName } from "vue-router";
 
 const homeRoute = routes.find(({ name }) => name === RoutesName.Home);
-
-console.log(homeRoute);
 </script>
 
 <template>
@@ -17,15 +15,15 @@ console.log(homeRoute);
     <div class="flex-1">
       <router-link
         :to="homeRoute?.path || '/'"
-        class="btn btn-ghost normal-case text-xl"
+        class="btn btn-ghost normal-case text-xl gap-0"
       >
         <span class="text-primary">Tw</span
-        ><!-- --><span class="text-secondary">on</span>
+        ><span class="text-secondary">on</span>
       </router-link>
     </div>
 
     <div class="flex-none">
-      <ul class="menu menu-horizontal px-1">
+      <ul tabindex="0" class="menu menu-horizontal px-1 items-center">
         <li
           v-if="homeRoute"
           :class="{ bordered: homeRoute.name as unknown as RouteRecordName === $route.name }"
@@ -39,7 +37,7 @@ console.log(homeRoute);
         <SubMenu :route="routesExamples">Examples</SubMenu>
         <SubMenu :route="routesDocs">Doc</SubMenu>
 
-        <li>
+        <li class="ml-5">
           <span class="!bg-transparent p-0">
             <a
               href="https://www.npmjs.com/package/twon"
@@ -51,6 +49,7 @@ console.log(homeRoute);
             </a>
           </span>
         </li>
+
         <li>
           <span class="!bg-transparent p-0 mr-4">
             <a
