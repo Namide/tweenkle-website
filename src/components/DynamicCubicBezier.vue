@@ -162,42 +162,43 @@ watch(width, update);
 </script>
 
 <template>
-  <div>
-    <div class="relative flex gap-4">
-      <div class="relative w-1/2">
-        <canvas ref="canvas" class="w-full"></canvas>
-        <button
-          ref="prev"
-          :style="{
-            bottom: 0,
-            left: 0,
-            transform: `translateX(${Number(x1) * size}px) translateY(${
-              -Number(y1) * size
-            }px) translateX(${-gripSize / 2}px) translateY(${
-              -margin.bottom * size
-            }px) translateY(${gripSize / 2}px)`,
-            width: `${gripSize}px`,
-            height: `${gripSize}px`,
-          }"
-          class="absolute bg-primary rounded-full btn-outline"
-        ></button>
-        <button
-          ref="next"
-          :style="{
-            bottom: 0,
-            left: 0,
-            transform: `translateX(${Number(x2) * size}px) translateY(${
-              -Number(y2) * size
-            }px) translateX(${-gripSize / 2}px) translateY(${
-              -margin.bottom * size
-            }px) translateY(${gripSize / 2}px)`,
-            width: `${gripSize}px`,
-            height: `${gripSize}px`,
-          }"
-          class="absolute bg-secondary rounded-full btn-outline"
-        ></button>
-      </div>
-      <div class="flex flex-col gap-2 justify-center items-center flex-1">
+  <div class="relative flex flex-col lg:flex-row gap-4 items-center">
+    <p></p>
+    <div class="relative w-full max-w-md md:max-w-lg">
+      <canvas ref="canvas" class="w-full"></canvas>
+      <button
+        ref="prev"
+        :style="{
+          bottom: 0,
+          left: 0,
+          transform: `translateX(${Number(x1) * size}px) translateY(${
+            -Number(y1) * size
+          }px) translateX(${-gripSize / 2}px) translateY(${
+            -margin.bottom * size
+          }px) translateY(${gripSize / 2}px)`,
+          width: `${gripSize}px`,
+          height: `${gripSize}px`,
+        }"
+        class="absolute bg-primary rounded-full btn-outline"
+      ></button>
+      <button
+        ref="next"
+        :style="{
+          bottom: 0,
+          left: 0,
+          transform: `translateX(${Number(x2) * size}px) translateY(${
+            -Number(y2) * size
+          }px) translateX(${-gripSize / 2}px) translateY(${
+            -margin.bottom * size
+          }px) translateY(${gripSize / 2}px)`,
+          width: `${gripSize}px`,
+          height: `${gripSize}px`,
+        }"
+        class="absolute bg-secondary rounded-full btn-outline"
+      ></button>
+    </div>
+    <div class="flex flex-col gap-2 justify-center items-center">
+      <div class="flex flex-col gap-2 justify-center items-center">
         <div class="flex">
           <span class="form-control mr-2">
             <label class="input-group input-group-xs">
@@ -247,10 +248,9 @@ watch(width, update);
           </span>
         </div>
       </div>
-    </div>
-    <p>
+
       <CodePart :code="code" />
-    </p>
+    </div>
   </div>
 </template>
 
