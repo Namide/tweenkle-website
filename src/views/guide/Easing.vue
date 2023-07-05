@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import * as Easing from "../../../twon/src/easing/easing";
-import Curve from "../../components/Curve.vue";
+import DisplayCurve from "../../components/DisplayCurve.vue";
 import DynamicCubicBezier from "@/components/DynamicCubicBezier.vue";
 import CodePart from "@/components/CodePart.vue";
 import { multiEasing } from "../../../twon/src/easing/multiEasing";
@@ -36,7 +36,7 @@ console.log(easeOutExpo(0.5))
         :key="ease.name"
         class="relative inline-block border pt-5 rounded-xl overflow-hidden"
       >
-        <Curve :equation="ease.curve"></Curve>
+        <DisplayCurve :equation="ease.curve"></DisplayCurve>
         <strong class="absolute top-4 right-5">{{ ease.name }}</strong>
       </div>
     </div>
@@ -44,11 +44,11 @@ console.log(easeOutExpo(0.5))
 
     <div class="flex items-center gap-5">
       <div class="relative inline-block border pt-5 rounded-xl overflow-hidden">
-        <Curve
+        <DisplayCurve
           :equation="
             multiEasing(cubicBezier(0.4, 0, 1, 0.2), Easing.easeOutElastic)
           "
-        ></Curve>
+        ></DisplayCurve>
         <strong class="absolute top-4 right-5"></strong>
       </div>
       <CodePart
@@ -63,14 +63,14 @@ const ease = multiEasing(
 
     <div class="flex items-center gap-5">
       <div class="relative inline-block border pt-5 rounded-xl overflow-hidden">
-        <Curve
+        <DisplayCurve
           :equation="
             multiEasing(
               { ease: cubicBezier(0.4, 0, 1, 0.2), value: 3, time: 2 },
               Easing.easeOutElastic
             )
           "
-        ></Curve>
+        ></DisplayCurve>
         <strong class="absolute top-4 right-5"></strong>
       </div>
       <CodePart

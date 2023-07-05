@@ -62,7 +62,7 @@ onMounted(() => {
       Math.floor(Math.random() * 0xff);
 
     const tween = new Tween(
-      sprite.position,
+      sprite.position as { x: number; y: number },
       [
         {
           x: Math.random() * app.screen.width,

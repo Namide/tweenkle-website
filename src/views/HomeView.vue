@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import useUpdateHead from "@/composable/useUpdateHead";
 import { defineAsyncComponent } from "vue";
-// const PixiExample = () => import("@/components/PixiExample.vue");
 
 const PixiExample = import.meta.env.SSR
   ? null

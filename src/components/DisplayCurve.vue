@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import type { Easing } from "../../../twon/src/types";
 
 const props = withDefaults(
   defineProps<{
-    equation: Easing;
+    equation: (progress: number) => number;
     width?: number;
     height?: number;
     color?: string;

@@ -9,11 +9,13 @@ defineProps<{ route: WebsiteRoute }>();
 const isOpen = ref(false);
 const summary = ref<HTMLElement>();
 
-useEventListener(window, "click", (event: Event) => {
-  if (event.target !== summary.value && isOpen.value) {
-    isOpen.value = false;
-  }
-});
+if (!import.meta.env.SSR) {
+  useEventListener(window, "click", (event: Event) => {
+    if (event.target !== summary.value && isOpen.value) {
+      isOpen.value = false;
+    }
+  });
+}
 </script>
 
 <template>
