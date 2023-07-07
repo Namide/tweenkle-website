@@ -5,8 +5,8 @@
     <h1 class="example-title">When use twon?</h1>
     <p>
       Twon is designed for pure Javascript animations. You can interpolate WebGL
-      animation with WebGL render library. You can use twon too for dynamic
-      animation like animations changed in real time by the user.
+      animation with WebGL render library and Twon. You can use twon too for
+      dynamic animation like animations changed in real time by the user.
     </p>
     <p>
       Avoid using twon or other tweening library for HTML precalculated

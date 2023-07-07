@@ -45,8 +45,8 @@ onMounted(() => {
   let texture = app.renderer.generateTexture(graphic);
   const dudeBase = new PIXI.Sprite(texture);
 
-  const totalDynamicSprites = 100; // app.renderer instanceof PIXI.Renderer ? 10000 : 100;
-  const totalSimpleSprites = 1000; // app.renderer instanceof PIXI.Renderer ? 10000 : 100;
+  const totalDynamicSprites = 5; // app.renderer instanceof PIXI.Renderer ? 10000 : 100;
+  const totalSimpleSprites = 5; // app.renderer instanceof PIXI.Renderer ? 10000 : 100;
 
   tweens = [];
   for (let i = 0; i < totalSimpleSprites; i++) {

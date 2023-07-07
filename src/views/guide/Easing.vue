@@ -40,7 +40,14 @@ console.log(easeOutExpo(0.5))
         <strong class="absolute top-4 right-5">{{ ease.name }}</strong>
       </div>
     </div>
+
     <h2>Multi easing</h2>
+
+    <p>
+      You can combine easing with multi easing. Each part of multi easing
+      combine an easing with his relative duration and his relative maximum
+      value.
+    </p>
 
     <div class="flex items-center gap-5">
       <div class="relative inline-block border pt-5 rounded-xl overflow-hidden">
@@ -53,10 +60,11 @@ console.log(easeOutExpo(0.5))
       </div>
       <CodePart
         code="import { easeOutExpo } from twon
-  
+
+// Combine two easing
 const ease = multiEasing(
-  cubicBezier(0.4, 0, 1, 0.2),
-  Easing.easeOutElastic
+  cubicBezier(0.4, 0, 1, 0.2), // Custom cubic bezier
+  Easing.easeOutElastic        // Equation
 )"
       />
     </div>
@@ -66,7 +74,7 @@ const ease = multiEasing(
         <DisplayCurve
           :equation="
             multiEasing(
-              { ease: cubicBezier(0.4, 0, 1, 0.2), value: 3, time: 2 },
+              { ease: cubicBezier(0.4, 0, 1, 0.2), value: 3, duration: 2 },
               Easing.easeOutElastic
             )
           "
@@ -76,9 +84,16 @@ const ease = multiEasing(
       <CodePart
         code="import { easeOutExpo } from twon
 
+// Combine two easing
 const ease = multiEasing(
-  { ease: cubicBezier(0.4, 0, 1, 0.2), value: 3, time: 2 },
-  Easing.easeOutElastic
+  // Custom cubic bezier with 3x more value
+  // than other and 2x more duration than other
+  {
+    ease: cubicBezier(0.4, 0, 1, 0.2),
+    value: 3,
+    duration: 2
+  },
+  Easing.easeOutElastic // Equation
 )"
       />
     </div>
